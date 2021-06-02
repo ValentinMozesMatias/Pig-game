@@ -11,6 +11,13 @@ const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 const current0El = document.getElementById('current--0');
 const current1El = document.getElementById('current--1');
+const switchPlayer = function () {
+    document.getElementById(`current--${activePlayer}`).textContent = 0;
+        currentScore = 0;
+        activePlayer = activePlayer === 0 ? 1 : 0;
+        player0El.classList.toggle('player--active');
+        player1El.classList.toggle('player--active');
+}
 
 //Starting condititons
 score0El.textContent = 0;
@@ -35,11 +42,20 @@ diceEl.src = `dice-${dice}.png`;
         document.getElementById(`current--${activePlayer}`).textContent = currentScore;
     } else {
         //switch to the next player
-        currentScore += dice;
-        document.getElementById(`current--${activePlayer}`).textContent = 0;
-        currentScore = 0;
-        activePlayer = activePlayer === 0 ? 1 : 0;
-        player0El.classList.toggle('player--active');
-        player1El.classList.toggle('player--active');
+        //currentScore += dice;
+        switchPlayer()
     }
+})
+
+btnHold.addEventListener('click', function(){
+
+    //1. add curent score to the active player
+    scores[activePlayer] += currentScore;
+    //scores[1] = scores[1] + currentScore
+    document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
+    //2. check player's score >= 100
+    //Finish the game
+
+    //3. Switch to the next player
+    switchPlayer()
 })
