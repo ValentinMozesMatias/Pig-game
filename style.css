@@ -38,6 +38,7 @@ main {
 
 .player {
   flex: 50%;
+  width: 180px;
   padding: 9rem;
   display: flex;
   flex-direction: column;
@@ -169,3 +170,32 @@ main {
 .hidden {
   display: none;
 }
+
+@media only screen and (orientation: portrait) and (min-device-witdh: 400px)  {
+body {
+    width: 80%;
+    height: 800px;
+    align-items: center;
+  }
+
+  main {
+    width: 80%;
+    height: 800px;
+    align-items: center;
+  }
+
+dice {
+  top: 40.5rem;
+  }
+
+  @media only screen and (orientation: landscape) and (min-device-witdh: 800px) {
+    body {
+      width: 150rem;
+      height: 400px;
+    }
+  
+    main {
+      width: 400px;
+      height: 400px;
+    }
+
